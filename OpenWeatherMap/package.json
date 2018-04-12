@@ -1,0 +1,15 @@
+{
+  "name": "OpenWeatherMap",
+  "version": "1.0.6",
+  "description": "Grabs weather information from the Open Weather Map REST API and posts it as a message to ioFabric.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+  },
+  "author": "IOTRACKS",
+  "license": "ISC",
+  "dependencies": {
+    "request": "2.70.0",
+    "@iotracks/container-sdk-nodejs": "1.1.x"
+  }
+}

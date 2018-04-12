@@ -1,0 +1,14 @@
+{
+  "name": "TemperatureConversion",
+  "version": "1.0.0",
+  "description": "Receives temperature messages, converts them to the desired output format, and if they pass transformation requirements publishes new messages with the desired format.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+  },
+  "author": "IOTRACKS",
+  "license": "ISC",
+  "dependencies": {
+    "@iotracks/container-sdk-nodejs": "1.1.x"
+    }
+}

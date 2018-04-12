@@ -1,0 +1,23 @@
+{
+  id: '',
+  tag: 'tag_v6fSJ1v2sD',
+  groupid: 'groupid_nX8CCRqUtB',
+  sequencenumber: 4,
+  sequencetotal: 5,
+  priority: 9,
+  version: 4,
+  timestamp: 0,
+  publisher: 'LKCdqQ4cFFfYCDtjQCvzQY',
+  authid: 'authid_UNpRHsVAnY',
+  authgroup: 'authgroup_i2CQOrPUvr',
+  chainposition: 9,
+  hash: 'hash_POJZftQBmb',
+  previoushash: 'previoushash_uQl7V10KP4',
+  nonce: 'nonce_045Nv1VXBz',
+  difficultytarget: 7,
+  infotype: 'infotype/gen',
+  infoformat: 'infoformat/gen',
+  contextdata: 'contextdata_UKCb3peBZEzRFmGHPcUFybDZzTJoNg',
+  contentdata: '{"coord":{"lon":"57.5071","lat":"78.5196"},"weather":[{"id":8,"main":"main_wv3Ic72r3S","description":"description_EMDzhTPBUe"}],"main":{"temp":"221.8861","pressure":10,"humidity":10,"temp_min":"225.5203","temp_max":"80.9565"},"visibility":10,"wind":{"speed":"108.6960","deg":"83.8040"},"id":4,"name":"NAME_8gMkkts2Ac"}'
+}
+

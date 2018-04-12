@@ -1,0 +1,14 @@
+{
+  "name": "JsonGenerator",
+  "version": "1.0.0",
+  "description": "Container generates ioMessages with contentdata as complex JSON object.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+  },
+  "author": "IOTRACKS",
+  "license": "ISC",
+  "dependencies": {
+    "@iotracks/container-sdk-nodejs": "1.1.x"
+    }
+}
