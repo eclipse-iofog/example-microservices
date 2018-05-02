@@ -1,8 +1,7 @@
-FROM alpine:latest
+FROM iofog/nodejs
 #for RaspberryPi
-#FROM armhf/alpine
+#FROM iofog/nodejs-arm
 
-RUN apk add --update nodejs
 COPY . /src
 RUN cd /src; npm install
 

@@ -1,4 +1,4 @@
-FROM iofog/python
+FROM iofog/python-arm
 
 RUN pip install jsonpath-rw
 

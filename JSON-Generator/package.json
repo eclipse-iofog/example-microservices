@@ -4,10 +4,10 @@
   "description": "Container generates ioMessages with contentdata as complex JSON object.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+    "url": "https://github.com/ioFog/example-microservices.git"
   },
-  "author": "IOTRACKS",
-  "license": "ISC",
+  "author": "Eclipse ioFog",
+  "license": "EPL-2.0",
   "dependencies": {
     "@iotracks/container-sdk-nodejs": "1.1.x"
     }

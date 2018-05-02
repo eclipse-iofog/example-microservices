@@ -1,12 +1,12 @@
-var ioFabricClient = require('@iotracks/container-sdk-nodejs');
+var ioFogClient = require('@iotracks/container-sdk-nodejs');
 
 var currentConfig;
 
-ioFabricClient.init('iofog', 54321, null,
+ioFogClient.init('iofog', 54321, null,
     function tempConversionMain() {
-        // first thing first is to get config from ioFabric
+        // first thing first is to get config from ioFog
         fetchConfig();
-        ioFabricClient.wsControlConnection(
+        ioFogClient.wsControlConnection(
             {
                 'onNewConfigSignal':
                     function onNewConfigSignal() {
@@ -15,12 +15,12 @@ ioFabricClient.init('iofog', 54321, null,
                     },
                 'onError':
                     function onControlSocketError(error) {
-                        console.error('There was an error with Control WebSocket connection to ioFabric: ', error);
+                        console.error('There was an error with Control WebSocket connection to ioFog: ', error);
                     }
             }
         );
-        ioFabricClient.wsMessageConnection(
-            function(ioFabricClient) { /* don't need to do anything on opened Message Socket */ },
+        ioFogClient.wsMessageConnection(
+            function(ioFogClient) { /* don't need to do anything on opened Message Socket */ },
             {
                 'onMessages':
                     function onMessagesSocket(messages) {
@@ -29,7 +29,7 @@ ioFabricClient.init('iofog', 54321, null,
                             for (var i = 0; i < messages.length; i++) {
                                 var new_msg = buildMessage(messages[i]);
                                 if(new_msg) {
-                                    ioFabricClient.wsSendMessage(new_msg);
+                                    ioFogClient.wsSendMessage(new_msg);
                                 } else {
                                     console.info('Message didn\'t pass transformation. Nothing to send.');
                                 }
@@ -40,7 +40,7 @@ ioFabricClient.init('iofog', 54321, null,
                     function(messageId, timestamp) { /*console.log('message Receipt');*/ },
                 'onError':
                     function onMessageSocketError(error) {
-                        console.error('There was an error with Message WebSocket connection to ioFabric: ', error);
+                        console.error('There was an error with Message WebSocket connection to ioFog: ', error);
                     }
             }
         );
@@ -48,7 +48,7 @@ ioFabricClient.init('iofog', 54321, null,
 );
 
 function fetchConfig() {
-    ioFabricClient.getConfig(
+    ioFogClient.getConfig(
         {
             'onBadRequest':
                 function onConfigBadRequest(errorMsg) {
@@ -80,7 +80,7 @@ function buildMessage(oldMsg) {
         oldMsg.infoformat == "decimal/fahrenheit") && oldMsg.infotype == "temperature") {
         var format = oldMsg.infoformat.split("/")[1];
         if (currentConfig && currentConfig.outputformat && format != currentConfig.outputformat){
-            newMsg = ioFabricClient.ioMessage();
+            newMsg = ioFogClient.ioMessage();
             newMsg.contentdata = convert(oldMsg.infoformat, currentConfig.outputformat, oldMsg.contentdata);
             newMsg.infoformat = "decimal/" + currentConfig.outputformat;
         }
