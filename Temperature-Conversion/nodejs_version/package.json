@@ -4,7 +4,7 @@
   "description": "Receives temperature messages, converts them to the desired output format, and if they pass transformation requirements publishes new messages with the desired format.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+    "url": "https://github.com/ioFog/example-microservices.git"
   },
   "author": "Eclipse ioFog",
   "license": "EPL-2.0",

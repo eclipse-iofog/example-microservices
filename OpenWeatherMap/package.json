@@ -4,7 +4,7 @@
   "description": "Grabs weather information from the Open Weather Map REST API and posts it as a message to ioFog.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iotracks/ioelement-containers-ga.git"
+    "url": "https://github.com/ioFog/example-microservices.git"
   },
   "author": "Eclipse ioFog",
   "license": "EPL-2.0",
