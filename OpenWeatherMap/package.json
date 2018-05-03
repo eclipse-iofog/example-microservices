@@ -10,6 +10,6 @@
   "license": "EPL-2.0",
   "dependencies": {
     "request": "2.70.0",
-    "@iotracks/container-sdk-nodejs": "1.1.x"
+    "@iofog/nodejs-sdk": "0.0.x"
   }
 }

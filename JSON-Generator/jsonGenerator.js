@@ -1,4 +1,4 @@
-var ioFogClient = require('@iotracks/container-sdk-nodejs');
+var ioFogClient = require('@iofog/nodejs-sdk');
 
 var frequency = 1000;
 var currentConfig;
