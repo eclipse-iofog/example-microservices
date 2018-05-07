@@ -7,9 +7,9 @@ import uuid
 import urllib2
 import time
 import subprocess
-from iofog_container_sdk.client import IoFogClient, IoFogException
-from iofog_container_sdk.listener import *
-from iofog_container_sdk.iomessage import IoMessage
+from iofog_python_sdk.client import IoFogClient, IoFogException
+from iofog_python_sdk.listener import *
+from iofog_python_sdk.iomessage import IoMessage
 
 CONTAINER_ID = 'containerid'
 TIMESTAMP = 'timestamp'

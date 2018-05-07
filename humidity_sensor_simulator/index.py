@@ -3,9 +3,9 @@ import random
 import threading
 
 import time
-from iofog_container_sdk.client import IoFogClient, IoFogException
-from iofog_container_sdk.iomessage import IoMessage
-from iofog_container_sdk.listener import *
+from iofog_python_sdk.client import IoFogClient, IoFogException
+from iofog_python_sdk.iomessage import IoMessage
+from iofog_python_sdk.listener import *
 
 current_config = None
 client = IoFogClient()

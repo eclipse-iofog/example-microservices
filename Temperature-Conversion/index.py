@@ -1,8 +1,8 @@
 import json
 import threading
 
-from iofog_container_sdk.client import IoFogClient, IoFogException
-from iofog_container_sdk.listener import *
+from iofog_python_sdk.client import IoFogClient, IoFogException
+from iofog_python_sdk.listener import *
 from jsonpath_rw import parse
 
 current_config = None
