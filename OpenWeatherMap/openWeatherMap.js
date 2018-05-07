@@ -1,5 +1,5 @@
 var request = require('request');
-var ioFabricClient = require('@iotracks/container-sdk-nodejs');
+var ioFogClient = require('@iofog/nodejs-sdk');
 
 var frequency = 1000;
 var timeout = 10000;
@@ -8,11 +8,11 @@ var openHttpRequestsCounter = 0;
 var currentConfig;
 var openWeatherIntervalFunction;
 
-ioFabricClient.init('iofabric', 54321, null,
+ioFogClient.init('iofog', 54321, null,
     function openWeatherMapMain(){
-        // first thing first is to get config from ioFabric
+        // first thing first is to get config from ioFog
         fetchConfig();
-        ioFabricClient.wsControlConnection(
+        ioFogClient.wsControlConnection(
             {
                 'onNewConfigSignal':
                     function onNewConfigSignal() {
@@ -21,7 +21,7 @@ ioFabricClient.init('iofabric', 54321, null,
                     },
                 'onError':
                     function onControlSocketError(error) {
-                        console.error('There was an error with WebSocket connection to ioFabric: ', error);
+                        console.error('There was an error with WebSocket connection to ioFog: ', error);
                     }
             }
         );
@@ -29,7 +29,7 @@ ioFabricClient.init('iofabric', 54321, null,
 );
 
 function fetchConfig() {
-    ioFabricClient.getConfig(
+    ioFogClient.getConfig(
         {
             'onBadRequest':
                 function onConfigBadRequest(errorMsg) {
@@ -78,7 +78,7 @@ function getOWMdata() {
                             if (!error && response.statusCode === 200) {
                                 var weatherResponse = body;
 
-                                var ioMsg = ioFabricClient.ioMessage(
+                                var ioMsg = ioFogClient.ioMessage(
                                     {
                                         'tag': '',
                                         'groupid': '',
@@ -99,7 +99,7 @@ function getOWMdata() {
                                     }
                                 );
 
-                                ioFabricClient.sendNewMessage(
+                                ioFogClient.sendNewMessage(
                                     ioMsg,
                                     {
                                         'onBadRequest': function onSendMsgBadRequest(errorMsg) {

@@ -1,4 +1,4 @@
-var ioFogClient = require('@iotracks/container-sdk-nodejs');
+var ioFogClient = require('@iofog/nodejs-sdk');
 
 var frequency = 1000;
 var currentConfig;
@@ -6,7 +6,7 @@ var sendIntervalFunction;
 
 ioFogClient.init('iofog', 54321, null,
     function jsonGeneratorMain() {
-        // first thing first is to get config from ioFabric
+        // first thing first is to get config from ioFog
         fetchConfig();
         ioFogClient.wsControlConnection(
             {
@@ -17,7 +17,7 @@ ioFogClient.init('iofog', 54321, null,
                     },
                 'onError':
                     function onControlSocketError(error) {
-                        console.error('There was an error with Control WebSocket connection to ioFabric: ', error);
+                        console.error('There was an error with Control WebSocket connection to ioFog: ', error);
                     }
             }
         );
@@ -30,7 +30,7 @@ ioFogClient.init('iofog', 54321, null,
                     function(messageId, timestamp) { /*console.log('message Receipt');*/ },
                 'onError':
                     function onMessageSocketError(error) {
-                        console.error('There was an error with Message WebSocket connection to ioFabric: ', error);
+                        console.error('There was an error with Message WebSocket connection to ioFog: ', error);
                     }
             }
         );
