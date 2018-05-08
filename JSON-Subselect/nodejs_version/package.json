@@ -1,0 +1,14 @@
+{
+  "name": "JsonSubselect",
+  "version": "1.0.0",
+  "description": "Container takes the portions of a JSON message that they want and publish the results as a new message with whatever ioMessage format they want.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Edgeworx/commercialsuite.git"
+  },
+  "author": "Eclipse ioFog",
+  "license": "EPL-2.0",
+  "dependencies": {
+    "@iofog/nodejs-sdk": "1.1.x"
+    }
+}

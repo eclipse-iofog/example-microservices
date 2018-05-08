@@ -1,0 +1,15 @@
+{
+  "name": "JsonRestApi",
+  "version": "1.0.4",
+  "description": "Receives messages and stores them. Provides REST API for outside systems to get the messages on request.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ioFog/example-microservices.git"
+  },
+  "author": "Eclipse ioFog",
+  "license": "EPL-2.0",
+  "dependencies": {
+    "http": "0.0.0",
+    "@iofog/nodejs-sdk": "1.1.x"
+    }
+}
