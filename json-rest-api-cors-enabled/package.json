@@ -1,0 +1,11 @@
+{
+  "name": "freeboard-JSON-provider",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Saeid Baghbidi",
+  "license": "EPL-2.0",
+  "dependencies": {
+    "@iofog/nodejs-sdk": "0.0.1",
+    "http": "0.0.0"
+  }
+}
