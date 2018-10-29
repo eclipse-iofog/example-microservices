@@ -54,8 +54,11 @@ const server = http.createServer((request, response) => {
       break
     }
     case 'GET': {
-      const base64 = lastMessage.contentdata
-      const data = (new Buffer(base64, 'base64')).toString('utf8')
+      let data = '{}'
+      if (lastMessage && lastMessage.contentdata) {
+        const base64 = lastMessage.contentdata
+        data = (new Buffer(base64, 'base64')).toString('utf8')
+      }
       response.writeHead(200, {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
