@@ -43,3 +43,4 @@ Enter iofog-controller microservice add -n name -c catalog-id -F flow-id -I iofo
       2. Get the list of containers with the following command: sudo docker ps in order to use container name for obtaining logs.
       3. See the detailed logs about system functionality with the following command: sudo docker logs CONTAINER_NAME (the last value is Container Name taken from the output of sudo docker ps).
      
+![DIAGNOSTICS](https://github.com/ioFog/example-microservices/blob/master/diagnostics/DIAGNOSTICS.png)
