@@ -10,6 +10,6 @@
   "license": "EPL-2.0",
   "dependencies": {
     "http": "0.0.0",
-    "@iofog/nodejs-sdk": "1.1.x"
-    }
+    "@iofog/nodejs-sdk": "0.0.x"
+  }
 }
