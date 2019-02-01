@@ -1,6 +1,6 @@
 DOCKER_IMAGE_VERSION=1.0
-DOCKER_IMAGE_NAME=iofog/temperature-conversion
-DOCKER_IMAGE_NAME_ARM=iofog/temperature-conversion-arm
+DOCKER_IMAGE_NAME=iofog/temperature-conversion-node
+DOCKER_IMAGE_NAME_ARM=iofog/temperature-conversion-node-arm
 DOCKER_IMAGE_TAGNAME=$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION)
 DOCKER_IMAGE_TAGNAME_ARM=$(DOCKER_IMAGE_NAME_ARM):$(DOCKER_IMAGE_VERSION)
 
