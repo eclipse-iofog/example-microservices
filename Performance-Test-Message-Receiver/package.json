@@ -1,0 +1,14 @@
+{
+  "name": "TestMessageReceiver",
+  "version": "1.0.0",
+  "description": "Container receives ioMessages from test message generator for performance testing.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ioFog/example-microservices.git"
+  },
+  "author": "Eclipse ioFog",
+  "license": "EPL-2.0",
+  "dependencies": {
+    "@iofog/nodejs-sdk": "0.0.x"
+    }
+}
