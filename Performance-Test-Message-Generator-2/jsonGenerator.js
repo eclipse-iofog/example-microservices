@@ -119,10 +119,11 @@ function sendGeneratedMessage() {
     }, frequency);
   setTimeout(function () {
     clearInterval(sendIntervalFunction)
+    setTimeout(function () {
+      sendGeneratedMessage()
+    }, 2 * 60 * 1000)
   }, 2 * 60 * 1000)
-  setTimeout(function () {
-    sendGeneratedMessage()
-  }, 2 * 60 * 1000)
+
 }
 
 function buildContentData() {
