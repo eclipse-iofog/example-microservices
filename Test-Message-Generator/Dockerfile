@@ -3,4 +3,4 @@ FROM iofog/nodejs
 COPY . /src
 RUN cd /src; npm install
 
-CMD ["node","/src/jsonGenerator.js"]
+CMD ["node","/src/testMessageGenerator.js"]

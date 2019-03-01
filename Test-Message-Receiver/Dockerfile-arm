@@ -4,4 +4,4 @@ FROM iofog/nodejs-arm
 COPY . /src
 RUN cd /src; npm install
 
-CMD ["node","/src/jsonGenerator.js"]
+CMD ["node","/src/testMessageReceiver.js"]
