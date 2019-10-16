@@ -1,0 +1,96 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": -8,
+				"4": -8
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Speed",
+						"value": "(datasources[\"Sensors\"][\"speed\"] * 1).toFixed(1)",
+						"units": "mph",
+						"min_value": 0,
+						"max_value": "100"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "RPM",
+						"value": "Math.trunc(datasources[\"Sensors\"][\"rpm\"])",
+						"units": "rpm",
+						"min_value": 0,
+						"max_value": "5000"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Acceleration",
+						"value": "(datasources[\"Sensors\"][\"acceleration\"] * 1).toFixed(3)",
+						"units": "m/s^2",
+						"min_value": 0,
+						"max_value": "5"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": 2,
+				"4": 3
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "sparkline",
+					"settings": {
+						"title": "Acceleration",
+						"value": [
+							"datasources[\"Sensors\"][\"acceleration\"]"
+						]
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Time",
+						"size": "regular",
+						"value": "new Date(datasources[\"Sensors\"][\"time\"]).toISOString()",
+						"animate": true
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Sensors",
+			"type": "JSON",
+			"settings": {
+				"url": "http://localhost:10101",
+				"use_thingproxy": false,
+				"refresh": 1,
+				"method": "GET"
+			}
+		}
+	],
+	"columns": 4
+}
