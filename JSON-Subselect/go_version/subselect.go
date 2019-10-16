@@ -69,8 +69,9 @@ func main() {
 	for {
 		select {
 		case msg := <-messageChannel:
+
 			go func() {
-				selected, err := buildMessage(msg)
+				selected, err := buildMessage(msg.(*sdk.IoMessage))
 				if err != nil {
 					logger.Println(err.Error())
 				} else {

@@ -1,22 +1,23 @@
-## Build with version number for test purposes
+DOCKER_IMAGE_VERSION=1.0
+DOCKER_IMAGE_NAME=iofog/temperature-conversion
+DOCKER_IMAGE_NAME_ARM=iofog/temperature-conversion-arm
+DOCKER_IMAGE_TAGNAME=$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION)
+DOCKER_IMAGE_TAGNAME_ARM=$(DOCKER_IMAGE_NAME_ARM):$(DOCKER_IMAGE_VERSION)
+
+default: build
+
 build:
-	sudo docker build -t iofog/temperature-conversion:$(TAG) .
-## Push with version number for test purposes
+	docker build -t $(DOCKER_IMAGE_TAGNAME) .
+	docker tag $(DOCKER_IMAGE_TAGNAME) $(DOCKER_IMAGE_NAME):latest
+
 push:build
-    sudo docker push iofog/temperature-conversion:$(TAG)
-## Tag latest to verified version number
-latest:
-    sudo docker tag iofog/temperature-conversion:$(TAG) iofog/temperature-conversion
-## Push latest
-push-latest:latest
-    sudo docker push iofog/temperature-conversion
+	docker push $(DOCKER_IMAGE_TAGNAME)
+	docker push $(DOCKER_IMAGE_NAME)
 
 ## Same cmds for arm
 build-arm:
-    sudo docker build -t iofog/temperature-conversion-arm:$(TAG) -f Dockerfile-arm .
+	docker build -t $(DOCKER_IMAGE_TAGNAME_ARM) -f Dockerfile-arm .
+	docker tag $(DOCKER_IMAGE_TAGNAME_ARM) $(DOCKER_IMAGE_NAME_ARM):latest
 push-arm:build-arm
-    sudo docker push iofog/temperature-conversion-arm:$(TAG)
-latest-arm:
-    sudo docker tag iofog/temperature-conversion-arm:$(TAG) iofog/temperature-conversion-arm
-push-latest-arm:latest-arm
-    sudo docker push iofog/temperature-conversion-arm
+	docker push $(DOCKER_IMAGE_TAGNAME_ARM)
+	docker push $(DOCKER_IMAGE_NAME_ARM)

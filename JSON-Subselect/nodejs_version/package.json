@@ -9,6 +9,6 @@
   "author": "Eclipse ioFog",
   "license": "EPL-2.0",
   "dependencies": {
-    "@iofog/nodejs-sdk": "1.1.x"
-    }
+    "@iofog/nodejs-sdk": "0.0.x"
+  }
 }
