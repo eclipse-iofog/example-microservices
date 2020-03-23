@@ -16,8 +16,7 @@ function read(client): Promise<void> {
     parser.on('readable', async () => {
       let data = parser.read()
       while (data) {
-        const ms = (data[0] * 1000) - time
-        await sleep(ms)
+        await sleep(1000)
 
         time = (data[0] * 1000)
         const json = {
