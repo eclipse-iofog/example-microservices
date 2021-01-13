@@ -11,9 +11,9 @@ Use the Diagnostic Container if something goes wrong on your machine with ioFog 
  
 ### Examples of configuration JSONs: 
 The full config for the container should look the following way: <br>
-```{ "report_url": { "ip": "127.0.0.1", "host" : "localhost", "port" : 6666, "url" : "/report", "secure" : false }, "ping_rb": true, "interval" : 60}``` <br>
+```{ "report_url": { "ip": "127.0.0.1", "host" : "localhost", "port" : 6666, "url" : "/report", "secure" : false }, {"ping_rb": true, "interval" : 60}``` <br>
 If "report_url" is not provided or is not available then whole output will be logged to console. Following example is valid and can be used if you don't need to send logs outside: <br>
-```"ping_rb": true, "interval" : 60}``` <br>
+```{"ping_rb": true, "interval" : 60}``` <br>
 
 ### Config explanation: <br>
 "report_url": config specifying where to send logs (log to console; not required parameter) <br>
