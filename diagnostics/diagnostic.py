@@ -1,5 +1,5 @@
 #********************************************************************************
-#  Copyright (c) 2018 Edgeworx, Inc.
+#  Copyright (c) 2020 Edgeworx, Inc.
 #
 #  This program and the accompanying materials are made available under the
 #  terms of the Eclipse Public License v. 2.0 which is available at
@@ -29,9 +29,7 @@ DIAGNOSTIC_TEST = 'diagnostic/test'
 APPLICATION_JSON = 'application/json'
 URL = 'url'
 REPORT_URL = 'report_url'
-COMSAT_LIST = 'comsat_list'
 PING_REST_BLUE = 'ping_rb'
-PING_LOGGER = 'ping_logger'
 INTERVAL = 'interval'
 IP = 'ip'
 PORT = 'port'
@@ -47,9 +45,7 @@ TEST_CLIENT_CREATION = 'CLIENT CREATION CHECK'
 TEST_HEARTBEAT = 'HEARTBEAT CHECK'
 TEST_WEBSOCKETS = 'WEBSOCKETS CHECK'
 TEST_GET_CONFIG = 'GET CONFIG CHECK'
-TEST_COMSAT = 'COMSAT CHECK'
 TEST_REST_BLUE = 'REST BLUE CHECK'
-TEST_LOGGER = 'LOGGER CONTAINER CHECK'
 MESSAGE_SOCKET = 'MESSAGE SOCKET'
 CONTROL_SOCKET = 'CONTROL SOCKET'
 PUBLIC_REPORTING = 'PUBLIC REPORTING'
@@ -81,12 +77,8 @@ class DiagnosticGuru:
         }
         self.heartbeat_timer = None
         self.heartbeat_lock = threading.Lock()
-        self.comsat_timer = None
-        self.comsat_lock = threading.Lock()
         self.rb_timer = None
         self.rb_lock = threading.Lock()
-        self.logger_timer = None
-        self.logger_lock = threading.Lock()
 
     def _send_report(self, message):
         self.report_draft[MESSAGE] = message
@@ -127,23 +119,6 @@ class DiagnosticGuru:
                       'Error while connecting to {}({}, {}): {}'.format(description, host, port, e), logging.ERROR)
             return False
 
-    def _ping_comsat(self):
-        self.lock.acquire()
-        config = self.current_config
-        self.lock.release()
-
-        if not config:
-            self._log(TEST_COMSAT, 'Container config is empty. Aborting...', logging.ERROR)
-            return
-        comsat_list = config.get(COMSAT_LIST, [])
-
-        with self.comsat_lock:
-            for comsat_ip in comsat_list:
-                self._ping(comsat_ip, test=TEST_COMSAT)
-            if self.interval:
-                self.comsat_timer = threading.Timer(self.interval, self._ping_comsat)
-                self.comsat_timer.start()
-
     def _send_heartbeat(self):
         with self.heartbeat_lock:
             self._log(TEST_HEARTBEAT, '----^v----^v----', logging.DEBUG)
@@ -157,13 +132,6 @@ class DiagnosticGuru:
             if self.interval:
                 self.rb_timer = threading.Timer(self.interval, self._ping_rb)
                 self.rb_timer.start()
-
-    def _ping_logger(self):
-        with self.logger_lock:
-            self._ping_port(self.iofog_client.host, self.log_container_port, 'Log System Container', TEST_LOGGER)
-            if self.interval:
-                self.logger_timer = threading.Timer(self.interval, self._ping_logger)
-                self.logger_timer.start()
 
     def test_client_creation(self):
         try:
@@ -222,16 +190,6 @@ class DiagnosticGuru:
             self.rb_timer.cancel()
         self.rb_lock.release()
 
-        self.comsat_lock.acquire()
-        if self.comsat_timer:
-            self.comsat_timer.cancel()
-        self.comsat_lock.release()
-
-        self.logger_lock.acquire()
-        if self.logger_timer:
-            self.logger_timer.cancel()
-        self.logger_lock.release()
-
         attempt_limit = 5
         config = None
         while attempt_limit > 0:
@@ -261,9 +219,6 @@ class DiagnosticGuru:
         self.test_heartbeat()
         if config.get(PING_REST_BLUE, False):
             self._ping_rb()
-        if config.get(PING_LOGGER, False):
-            self._ping_logger()
-        self._ping_comsat()
 
     def test_websockets(self):
         if not self.iofog_client:
