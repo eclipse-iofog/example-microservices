@@ -10,7 +10,6 @@ latest:
 ## Push latest
 push-latest:latest
     sudo docker push iofog/diagnostics
-
 ## Same cmds for arm
 build-arm:
     sudo docker build -t iofog/diagnostics-arm:$(TAG) -f Dockerfile-arm .

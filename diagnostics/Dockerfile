@@ -1,4 +1,4 @@
-FROM iofog-python
+FROM iofog/python
 
 COPY diagnostic.py /src/
 WORKDIR  /src
