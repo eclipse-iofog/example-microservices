@@ -1,2 +1,2 @@
 image:
-	docker build -t baghbidi/public:sensors .
+	docker build -t iofog/sensors:latest .
